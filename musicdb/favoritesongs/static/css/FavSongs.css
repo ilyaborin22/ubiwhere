@@ -1,0 +1,22 @@
+
+
+.delete-button{
+    width: 3rem;
+}
+
+.header {
+    margin: 1.5rem;
+}
+
+.new-user-button {
+    margin: 1.5rem;
+}
+
+#new-user-form {
+    position: absolute;
+    padding: 3rem;
+    top: 2rem;
+    background-color: lightgrey;
+    border-radius: 1.5rem;
+    width: 80%;
+}

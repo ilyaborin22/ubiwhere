@@ -1,0 +1,45 @@
+
+<div class="container">
+    <div class="row">
+        <h2 class="header col push-md-1 col-md-7">Songs</h2>
+        <button type="button" ng-click="getAllSongs(); newFavSongForm=true" ng-init="newFavSongForm=false"
+            class="new-user-button col col-md-2 btn btn-outline-primary waves-effect">New song
+        </button>
+        <button type="button" ng-click="goBackToUsers()"
+            class="new-user-button col col-md-1 btn btn-outline-primary waves-effect">Back
+        </button>
+
+    </div>
+    <div class="row list-group-item" style="font-weight:bold">
+        <span class="col push-md-1 col-md-3">Title</span>
+        <span class="col push-md-1 col-md-3">Artist</span>
+        <span class="col push-md-1 col-md-3">Album</span>
+        <span class="col push-md-1 col-md-1">Delete</span>
+    </div>
+    <div class="row list-group-item" ng-repeat="song in favSongs">
+        <span class="col push-md-1 col-md-3">{{song.title}}</span>
+        <span class="col push-md-1 col-md-3">{{song.artist}}</span>
+        <span class="col push-md-1 col-md-3">{{song.album}}</span>
+        <button type="button" class="col push-md-1 col-md-1 delete-button btn btn-outline-primary waves-effect"
+                data-toggle="tooltip" data-placement="bottom" ng-click="deleteFavoriteSong($index)">
+            &#x2717
+        </button>
+    </div>
+
+    <form id="new-fav-song-form" ng-show="newFavSongForm">
+        <div class="form-group">
+            <label for="select-fav-song">Select favorite song</label>
+            <select class="form-control" id="select-fav-song">
+                <option id="{{song.id}}" ng-repeat="song in songs">
+                    {{song.artist}}, {{song.title}}({{song.album}})
+                </option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-outline-primary waves-effect" ng-click="addFavoriteSong()">OK</button>
+        <button type="button" style="margin-left: 4rem" class="btn btn-outline-primary waves-effect" ng-click="newFavSongForm=false">CANCEL</button>
+    </form>
+
+</div>
+
+
+

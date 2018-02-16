@@ -5,15 +5,21 @@ from django.conf.urls.static import static
 from favoritesongs import views
 
 
+user_api_patterns = [
+    url(r'^api/users/$', views.Users.as_view()),
+    url(r'^api/users/(?P<pk>[0-9]+)/$', views.Users.as_view()),
+]
+
+song_api_patterns = [
+    url(r'^api/songs/$', views.Songs.as_view()),
+    url(r'^api/songs/user/(?P<pk>[0-9]+)/$', views.UserFavSongs.as_view()),
+]
+
 urlpatterns = [
+    url(r'^$', views.index),
     url(r'^users/$', views.index),
-    url(r'^users/api/$', views.Users.as_view()),
-    url(r'^users/api/(?P<pk>[0-9]+)/$', views.Users.as_view()),
-    # url(r'^app/users/user/(?P<pk>[0-9]+)/fav-songs/$', views.user_fav_songs),
-    url(r'^songs/$', views.songs),
-    url(r'^songs/api/$', views.Songs.as_view()),
-    url(r'^songs/api/(?P<pk>[0-9]+)/$', views.Songs.as_view()),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
+              user_api_patterns + song_api_patterns
 
 urlpatterns = format_suffix_patterns(urlpatterns)
 

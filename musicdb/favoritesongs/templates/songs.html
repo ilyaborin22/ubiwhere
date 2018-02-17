@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Favorite Songs</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <script src="{% static 'js/FavSongsApp.js' %}"></script>
+    <link href="{% static 'css/FavSongs.css' %}" rel="stylesheet">
+
+</head>
+
+<body ng-app="favSongsApp" ng-controller="SongsCtrl">
+
+    {% verbatim %}
+
+    <div class="container">
+        <div class="row">
+            <h2 class="header col push-md-1 col-md-8">Songs</h2>
+            <button type="button" ng-click="newSongForm=true" ng-init="newSongForm=false"
+                class="new-user-button col col-md-2 btn btn-outline-primary waves-effect">New song
+            </button>
+        </div>
+        <div class="row list-group-item" style="font-weight:bold">
+            <span class="col push-md-1 col-md-3">Title</span>
+            <span class="col push-md-1 col-md-3">Artist</span>
+            <span class="col push-md-1 col-md-3">Album</span>
+            <span class="col push-md-1 col-md-1">Delete</span>
+        </div>
+        <div class="row list-group-item" ng-repeat="song in songs">
+            <span class="col push-md-1 col-md-3">{{song.title}}</span>
+            <span class="col push-md-1 col-md-3">{{song.artist}}</span>
+            <span class="col push-md-1 col-md-3">{{song.album}}</span>
+            <button type="button" class="col push-md-1 col-md-1 delete-button btn btn-outline-primary waves-effect"
+                    data-toggle="tooltip" data-placement="bottom" ng-click="deleteSong($index)">
+                &#x2717
+            </button>
+        </div>
+
+        <form id="new-user-form" ng-show="newSongForm==true">
+            <div class="form-group">
+                <label for="new-song-title">New song title</label>
+                <input type="text" class="form-control" id="new-song-title" placeholder="Enter song title">
+            </div>
+            <div class="form-group">
+                <label for="new-song-artist">New song artist</label>
+                <input type="text" class="form-control" id="new-song-artist" placeholder="Enter song artist">
+            </div>
+            <div class="form-group">
+                <label for="new-song-album">New song album</label>
+                <input type="text" class="form-control" id="new-song-album" placeholder="Enter song album">
+            </div>
+            <button type="button" class="btn btn-outline-primary waves-effect" ng-click="addSong()">OK</button>
+            <button type="button" style="margin-left: 4rem" class="btn btn-outline-primary waves-effect" ng-click="newSongForm=false;">CANCEL</button>
+        </form>
+
+    </div>
+
+    {% endverbatim %}
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

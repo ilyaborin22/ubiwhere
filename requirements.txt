@@ -13,7 +13,6 @@ Markdown==2.6.11
 psycopg2==2.7.4
 psycopg2-binary==2.7.4
 Pygments==2.2.0
-python-apt==1.1.0b1
 python-dotenv==0.7.1
 pytz==2018.3
 requests==2.18.4

@@ -73,11 +73,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'musicdb.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-import dotenv
-import dj_database_url
-
 # this line is already in your settings.py
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -88,23 +83,27 @@ dotenv = Dotenv(os.path.join(os.path.dirname(__file__), ".env")) # Of course, re
 os.environ.update(dotenv)
 
 
+# Database
+# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+import dj_database_url
+
 # load database from the DATABASE_URL environment variable
-#DATABASES = {}
-#DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'musicdb_ilya',
-        'USER': 'musicdb_ilya',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES = {
+#     # 'default': {
+#     #     'ENGINE': 'django.db.backends.sqlite3',
+#     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     # }
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'musicdb_ilya',
+#         'USER': 'musicdb_ilya',
+#         'PASSWORD': '123456',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation

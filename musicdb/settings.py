@@ -25,7 +25,7 @@ SECRET_KEY = '0som%xd3i7!zg^_a$jhi=r2g2ty=5_awe-+y=kcrj&etutl=oi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'pacific-basin-32677.herokuapp.com']
 
 
 # Application definition
@@ -72,16 +72,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'musicdb.wsgi.application'
 
-
 # this line is already in your settings.py
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # load environment variables from .env
-import os
 from dotenv import Dotenv
-dotenv = Dotenv(os.path.join(os.path.dirname(__file__), ".env")) # Of course, replace by your correct path
+dotenv = Dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 os.environ.update(dotenv)
-
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
